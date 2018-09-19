@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs
+/MainClient/.vs
+/MainClient/bin
+/MainClient/ExternalReferences
+/MainClient/obj
