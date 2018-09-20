@@ -4,8 +4,8 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.StorageClient;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace CloudLoadTestingClient
 {
@@ -36,7 +36,7 @@ namespace CloudLoadTestingClient
                 try
                 {
                     Logger.LogMessage("Uploading file {0} to blob.", Path.GetFileName(localFile));
-                    CloudBlobContainer container = new CloudBlobContainer(testDrop.AccessData.DropContainerUrl, new StorageCredentialsSharedAccessSignature(testDrop.AccessData.SasKey));
+                    CloudBlobContainer container = new CloudBlobContainer(new Uri(testDrop.AccessData.DropContainerUrl), new StorageCredentials(testDrop.AccessData.SasKey));
                     CloudBlockBlob blob = container.GetBlockBlobReference(Path.GetFileName(localFile.ToLower()));
                     using (var fileStream = File.OpenRead(localFile))
                     {
