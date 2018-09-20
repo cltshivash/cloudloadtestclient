@@ -9,5 +9,6 @@ Cloud Load Test Client to trigger and import load test run results
 
 3. Run the following command to download the results:
 
-   CloudLoadTestingClient.exe /downloadresult <YourRunId>
+   CloudLoadTestingClient.exe /downloadresult {Run Guid}
+   
 4. The location of the results file (ltrar) would be output. Import this into the load test results store.
